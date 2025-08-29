@@ -84,3 +84,4 @@ class TwoSum_Easy {
     }
 }
 
+//Array based TRY DOING USING HASHMAPS.
