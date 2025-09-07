@@ -31,13 +31,21 @@ void printDLL(Node *head){
 }
 
 Node *insertHead(Node *head,int val){
-    Node *temp = new Node(val,head->next,nullptr);
-    Node *remove = head;
+    Node *temp = new Node(val,head,nullptr);
+    head->back = temp;
     head = temp;
-    delete(remove);
     return head;
 }
 
+Node *insertTail(Node *head, int val){
+    Node *temp = head;
+    while (temp->next != nullptr){
+        temp = temp->next;
+    }
+    Node *newNode = new Node(val, nullptr, temp);
+    temp->next = newNode;
+    return head;
+}
 
 Node *delHeadDLL(Node *head){
     if(head == NULL || head->next == NULL){
@@ -103,6 +111,28 @@ Node *delKthElement(Node *head, int position){
     
 }
 
+// Node * delKthElementLogin2(Node *head, int k){
+//     if(head == nullptr){
+//         return nullptr;
+//     }
+//     int cnt = 0;
+//     Node *kNode = 0;
+//     while(kNode != nullptr){
+//         cnt++;
+//         if(cnt ==k){
+//             break;}
+//         kNode = kNode->next;
+//     }
+//     Node *prev = kNode->back;
+//     Node *front = kNode->next;
+//     if(prev == nullptr && front  == nullptr){
+//         return nullptr;
+//     }
+//     else if (prev == nullptr){
+//         return deleteHea
+//     }
+// }
+
 
 int main(){
     vector <int>arr = {1, 2, 3, 4, 5, 6};
@@ -113,7 +143,7 @@ int main(){
         prev->next = temp;
         prev = temp;
     }
-    head = delKthElement(head,1);
+    head = insertTail(head,9);
     printDLL(head);
 
     return 0;
