@@ -55,7 +55,7 @@ public:
 };
 
 // Utility function to print a linked list
-void printList(ListNode* head) {
+void printList(ListNode* &head) {
     ListNode* temp = head;
     while (temp != nullptr) {
         cout << temp->val;
